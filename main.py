@@ -14,7 +14,7 @@ cascade_path = "face_cascades/haarcascade_profileface.xml"
 face_cascade = cv2.CascadeClassifier(cascade_path)
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
-recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer = cv2.face.createLBPHFaceRecognizer()
 count = 0
 
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
         print(os.path.join(os.path.abspath(path), f) + "*.mp4")
         print(list_of_videos)
         if os.path.exists("model.yaml"):
-            recognizer.read("model.yaml")
+            recognizer.load("model.yaml")
             for video in list_of_videos:
                 camera = cv2.VideoCapture(os.path.join(path, video))
                 grabbed, frame = camera.read()

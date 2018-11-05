@@ -9,7 +9,7 @@ import argparse
 
 cascadePath = "face_cascades/haarcascade_profileface.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath)
-recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer = cv2.face.createLBPHFaceRecognizer()
 
 
 def get_images_and_labels(path):
@@ -37,8 +37,8 @@ def get_images_and_labels(path):
         faces = faceCascade.detectMultiScale(image)
         for (x, y, w, h) in faces:
             images.append(image[y: y + h, x: x + w])
-            # cv2.imwrite("subject02."+str(i)+".jpg",image[y: y + h, x: x + w])
-            # i=i+1
+            #cv2.imwrite("subject02."+str(i)+".jpg",image[y: y + h, x: x + w])
+            #i=i+1
             labels.append(nbr)
             cv2.imshow("Adding faces to traning set",
                        image[y: y + h, x: x + w])
